@@ -12,8 +12,10 @@ export async function POST(request: NextRequest) {
   const lang = data.get("lang");
   const locale = typeof lang === "string" && hasLocale(lang) ? lang : defaultLocale;
 
-  // Only ever redirect to our own locale root (no open redirect).
-  const response = NextResponse.redirect(new URL(`/${locale}`, request.url), 303);
+  // Only ever redirect to our own locale root (no open redirect). Relative on purpose:
+  // request.url reports the server's own host (localhost in dev, the internal host
+  // behind a proxy), so the browser resolves this against the address it's actually on.
+  const response = new NextResponse(null, { status: 303, headers: { Location: `/${locale}` } });
   if (typeof theme === "string" && hasTheme(theme)) {
     if (theme === "focus") {
       response.cookies.set(THEME_COOKIE, theme, {
