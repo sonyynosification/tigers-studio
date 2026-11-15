@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── tigers.build · Theme A "Chunky & Cheeky" (soft neo-brutalism) ── */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --color-cream: #fff4e0;
+  --color-paper: #fff8ef;
+  --color-ink: #111111;
+  --color-tiger: #ff7a1a;
+  --color-tiger-dark: #e5600a;
+  --color-mint: #6ee7b7;
+  --color-lilac: #c4b5fd;
+  --color-sun: #ffe066;
+  --color-blush: #ff8fa3;
+  --color-sky: #a5d8ff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Theme B "Focus" (Bento): calm paper, warm ink, the same tiger orange */
+  --color-bt-paper: #fbfaf8;
+  --color-bt-ink: #16130f;
+  --color-bt-line: #ece7e1;
+  --color-bt-muted: #5c544c;
+  --color-bt-lime: #c6f432;
+  --color-bt-sky: #a5d8ff;
+  --color-bt-lilac: #d9ccff;
+
+  --shadow-chunk-sm: 3px 3px 0 var(--color-ink);
+  --shadow-chunk: 5px 5px 0 var(--color-ink);
+  --shadow-chunk-lg: 8px 8px 0 var(--color-ink);
+  --shadow-chunk-press: 2px 2px 0 var(--color-ink);
+
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-kit-float: kit-float 4s ease-in-out infinite;
+  --animate-kit-shake: kit-shake 0.45s ease-in-out;
+  --animate-wiggle: wiggle 0.5s ease-in-out;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes kit-float {
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes kit-shake {
+    25% {
+      transform: rotate(-5deg) scale(1.05);
+    }
+    50% {
+      transform: rotate(5deg) scale(1.08);
+    }
+    75% {
+      transform: rotate(-3deg);
+    }
+  }
+  @keyframes wiggle {
+    33% {
+      transform: rotate(-4deg);
+    }
+    66% {
+      transform: rotate(4deg);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --font-display: var(--font-display-face), "Arial Black", system-ui, sans-serif;
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-bento: var(--font-bricolage), system-ui, sans-serif;
+  --font-bento-body: var(--font-inter), system-ui, sans-serif;
+}
+
+/* the sticker outline */
+@utility border-chunk {
+  border: 2.5px solid var(--color-ink);
+}
+
+/* buttons/cards that physically press down */
+@utility press {
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+  &:hover,
+  &:focus-visible {
+    transform: translate(3px, 3px);
+    box-shadow: var(--shadow-chunk-press);
+  }
+  &:active {
+    transform: translate(5px, 5px);
+    box-shadow: none;
+  }
+}
+
+/* cards that tilt like a peeled sticker */
+@utility tilt {
+  transition: transform 160ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  &:hover {
+    transform: rotate(-1.5deg) translateY(-4px);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  /* Focus mode page sets .theme-focus on its wrapper; match the canvas behind it. */
+  body:has(.theme-focus) {
+    background: var(--color-bt-paper);
+    color: var(--color-bt-ink);
+  }
+  ::selection {
+    background: var(--color-tiger);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Vietnamese stacks diacritics above capitals (Ấ, Ể, Ỗ…); tight display leading would make them collide. */
+:lang(vi) .font-display {
+  line-height: 1.12;
 }

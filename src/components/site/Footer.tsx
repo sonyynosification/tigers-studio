@@ -1,0 +1,31 @@
+import { Logo } from "./Header";
+import { nav, site } from "@/content/site";
+import { getDictionary } from "@/i18n/get-dictionary";
+
+export async function Footer() {
+  const t = await getDictionary();
+  return (
+    <footer className="border-t-[2.5px] border-ink bg-paper">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between">
+        <Logo className="self-start md:self-auto" />
+        <ul className="flex flex-wrap gap-6 font-bold">
+          {nav.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} className="hover:text-tiger-dark">
+                {t.nav[item.key]}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href={`mailto:${site.email}`} className="hover:text-tiger-dark">
+              {t.footer.email}
+            </a>
+          </li>
+        </ul>
+        <p className="text-sm font-medium">
+          {t.footer.madeWith} © {site.name}
+        </p>
+      </div>
+    </footer>
+  );
+}

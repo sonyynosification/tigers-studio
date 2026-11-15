@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- Kit, step 01 "Sniff around": one eye squinting, the other glancing up at a bird in the top-right corner. -->
+
+  <!-- the bird, a chubby bluebird hovering and looking down at Kit -->
+  <g stroke="#111" stroke-linejoin="round" stroke-linecap="round" stroke-width="3.5">
+    <!-- tail feathers -->
+    <path d="M219 30 L235 22 Q237 28 232 31 Q237 35 233 39 L218 36Z" fill="#4fa8e8"/>
+    <!-- body -->
+    <path d="M182 30 Q182 10 203 10 Q224 10 224 31 Q224 46 204 46 Q182 46 182 30Z" fill="#7cc7ff" stroke-width="4"/>
+    <!-- belly -->
+    <path d="M187 36 Q194 44 206 43 Q198 38 196 31Z" fill="#fff8ef" stroke="none"/>
+    <!-- head tuft -->
+    <path d="M198 11 Q195 2 202 4 Q203 8 202 10 M204 10 Q208 1 213 6" fill="none" stroke-width="3"/>
+    <!-- beak -->
+    <path d="M184 25 L172 31 L185 33Z" fill="#ffd23f" stroke-width="3"/>
+    <!-- eye + cheek -->
+    <circle cx="193" cy="23" r="3.4" fill="#111" stroke="none"/>
+    <circle cx="194.3" cy="21.8" r="1.1" fill="#fff" stroke="none"/>
+    <circle cx="196" cy="31" r="3.6" fill="#ff5c8a" opacity="0.45" stroke="none"/>
+    <!-- wing, flapping -->
+    <path class="wing" d="M202 28 Q206 12 222 14 Q220 30 206 34Z" fill="#4fa8e8"/>
+  </g>
+
+  <!-- Kit's head, tipped slightly toward the bird -->
+  <g transform="translate(48 56) scale(0.95) rotate(8 100 100)">
+    <path d="M38 40 Q30 6 62 20 L58 52Z" fill="#ff7a1a" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M162 40 Q166 20 160 12 L153 24 L147 14 Q141 15 138 20 L142 52Z" fill="#ff7a1a" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M44 30 Q42 18 54 24Z" fill="#ffd9b8"/>
+    <ellipse cx="100" cy="100" rx="82" ry="76" fill="#ff7a1a" stroke="#111" stroke-width="6"/>
+    <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round" stroke-width="7">
+      <path d="M80 36 L68 48 L80 60 M120 36 L132 48 L120 60 M106 32 L94 64"/>
+      <path d="M22 86 Q40 88 48 98 M20 112 Q38 110 46 118 M178 86 Q160 88 152 98 M180 112 Q162 110 154 118"/>
+    </g>
+    <path d="M110 76 Q132 62 150 80 Q160 100 142 110 Q120 116 112 100Z" fill="#111"/>
+    <ellipse cx="100" cy="132" rx="46" ry="34" fill="#fff8ef" stroke="#111" stroke-width="5"/>
+
+    <!-- squinting eye, drawn as a ">" -->
+    <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M62 84 L80 93 L62 102" stroke-width="6"/>
+    </g>
+    <!-- open eye, looking up and to the right -->
+    <ellipse cx="134" cy="88" rx="11" ry="13" fill="#fff8ef" stroke="#fff8ef" stroke-width="3"/>
+    <circle cx="138" cy="84" r="7.5" fill="#111"/>
+    <circle cx="140.5" cy="81.5" r="2.6" fill="#fff"/>
+
+    <path d="M88 118 Q100 112 112 118 Q106 130 100 130 Q94 130 88 118Z" fill="#f4a5b8" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+    <!-- lopsided, unconvinced mouth -->
+    <path d="M100 130 V139 M100 139 Q92 144 84 143 M100 139 Q110 148 120 140" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M105 144 L114 143 L110 155Z" fill="#fff" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="52" cy="118" r="9" fill="#ff5c8a" opacity="0.45"/>
+    <circle cx="148" cy="118" r="9" fill="#ff5c8a" opacity="0.45"/>
+  </g>
+
+  <!-- "notice!" marks above Kit's head -->
+  <style>
+    .notice { transform-origin: 146px 70px; animation: notice 2.4s ease-out infinite; }
+    @keyframes notice {
+      0%, 8% { opacity: 0; transform: scale(0.4); }
+      18% { opacity: 1; transform: scale(1.15); }
+      26%, 70% { opacity: 1; transform: scale(1); }
+      82%, 100% { opacity: 0; transform: scale(1); }
+    }
+    .wing { transform-origin: 204px 31px; animation: flap 0.5s ease-in-out infinite alternate; }
+    @keyframes flap { from { transform: rotate(-8deg); } to { transform: scaleY(0.55) rotate(6deg); } }
+    @media (prefers-reduced-motion: reduce) { .notice, .wing { animation: none; } }
+  </style>
+  <path class="notice" d="M138.3 60.8 L128.0 48.6 M145.0 58.0 L143.6 42.1 M152.0 59.6 L160.0 45.8" fill="none" stroke="#111" stroke-width="5.5" stroke-linecap="round"/>
+</svg>

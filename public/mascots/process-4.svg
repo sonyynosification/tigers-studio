@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- Kit, step 04 "Ship & roar": shipped it, roaring, empty cans and bottles all around. -->
+
+  <!-- roar lines either side of the head -->
+  <g class="roar" fill="none" stroke="#ff7a1a" stroke-width="5" stroke-linecap="round">
+    <path d="M22 70 Q10 98 22 126 M10 60 Q-4 98 10 136"/>
+    <path d="M218 70 Q230 98 218 126 M230 60 Q244 98 230 136"/>
+  </g>
+
+  <!-- Kit's head, tipped back mid-roar -->
+  <g class="shake">
+    <g transform="translate(32 6) scale(0.88) rotate(-4 100 100)">
+      <path d="M38 40 Q30 6 62 20 L58 52Z" fill="#ff7a1a" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M162 40 Q166 20 160 12 L153 24 L147 14 Q141 15 138 20 L142 52Z" fill="#ff7a1a" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M44 30 Q42 18 54 24Z" fill="#ffd9b8"/>
+      <ellipse cx="100" cy="100" rx="82" ry="76" fill="#ff7a1a" stroke="#111" stroke-width="6"/>
+      <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round" stroke-width="7">
+        <path d="M80 36 L68 48 L80 60 M120 36 L132 48 L120 60 M106 32 L94 64"/>
+        <path d="M22 86 Q40 88 48 98 M20 112 Q38 110 46 118 M178 86 Q160 88 152 98 M180 112 Q162 110 154 118"/>
+      </g>
+      <path d="M110 76 Q132 62 150 80 Q160 100 142 110 Q120 116 112 100Z" fill="#111"/>
+      <ellipse cx="100" cy="132" rx="46" ry="34" fill="#fff8ef" stroke="#111" stroke-width="5"/>
+
+      <!-- eyes squeezed shut: > < -->
+      <path d="M60 80 L78 89 L60 98" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M140 80 L122 89 L140 98" fill="none" stroke="#fff8ef" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- mouth: shut grin between roars, wide open on each roar -->
+      <path class="grin" d="M100 126 V134 M100 134 Q90 144 78 137 M100 134 Q110 144 122 137" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <g class="mouth">
+        <path d="M72 136 Q100 126 128 136 Q126 182 100 184 Q74 182 72 136Z" fill="#111" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M82 170 Q100 158 118 170 Q112 182 100 182 Q88 182 82 170Z" fill="#ff8fa3"/>
+        <path d="M77 137 L84 152 L90 134Z M123 137 L116 152 L110 134Z" fill="#fff" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/>
+      </g>
+
+      <path d="M88 114 Q100 108 112 114 Q106 126 100 126 Q94 126 88 114Z" fill="#f4a5b8" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="50" cy="122" r="10" fill="#ff5c8a" opacity="0.5"/>
+      <circle cx="150" cy="122" r="10" fill="#ff5c8a" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- the aftermath -->
+  <g stroke="#111" stroke-linejoin="round" stroke-linecap="round">
+    <!-- can on its side -->
+    <rect x="12" y="210" width="44" height="22" rx="4" fill="#c4b5fd" stroke-width="4"/>
+    <path d="M24 210 V232" fill="none" stroke="#fff8ef" stroke-width="4" opacity="0.7"/>
+    <ellipse cx="56" cy="221" rx="5" ry="11" fill="#cfd4dc" stroke-width="4"/>
+
+    <!-- empty can, standing, a little dented -->
+    <g transform="rotate(6 74 232)">
+      <path d="M62 198 V226 Q62 233 74 233 Q86 233 86 226 V198Z" fill="#7dd3fc" stroke-width="4"/>
+      <path d="M62 210 H86 M62 222 H86" fill="none" stroke="#fff8ef" stroke-width="3" opacity="0.8"/>
+      <path d="M86 206 Q80 210 86 214" fill="none" stroke-width="3"/>
+      <path d="M67 200 V230" fill="none" stroke="#fff8ef" stroke-width="3" opacity="0.6"/>
+      <ellipse cx="74" cy="198" rx="12" ry="4" fill="#cfd4dc" stroke-width="4"/>
+      <ellipse cx="77" cy="197.5" rx="3" ry="1.5" fill="none" stroke-width="2"/>
+    </g>
+
+    <!-- small puddle under the tipped bottle -->
+    <ellipse cx="176" cy="234" rx="26" ry="3.5" fill="#ffc94d" stroke-width="2.5"/>
+
+    <!-- bottle tipped over, spilling foam -->
+    <g transform="translate(130 222) rotate(84)">
+      <path d="M-10 0 V-34 Q-10 -42 -4 -46 V-60 H4 V-46 Q10 -42 10 -34 V0Z" fill="#5cc48a" stroke-width="4"/>
+      <rect x="-10" y="-28" width="20" height="14" fill="#fff8ef" stroke-width="3"/>
+      <rect x="-5" y="-64" width="10" height="5" rx="1.5" fill="#ffd23f" stroke-width="3"/>
+    </g>
+    <path d="M196 230 Q194 220 202 220 Q204 212 212 216 Q220 214 220 222 Q228 224 224 232Z" fill="#fff" stroke-width="3.5"/>
+
+    <!-- beer drops splashing out -->
+    <g class="drops" fill="#ffc94d" stroke-width="2.5">
+      <path class="d0" transform="translate(184 200) rotate(-20) scale(1.6)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+      <path class="d1" transform="translate(200 190) rotate(15) scale(1.28)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+      <path class="d2" transform="translate(208 206) rotate(30) scale(1.12)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+      <path class="d0" transform="translate(170 204) rotate(-35) scale(1.04)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+      <path class="d1" transform="translate(60 204) rotate(-15) scale(1.2)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+      <path class="d2" transform="translate(44 194) rotate(10) scale(0.96)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+      <path class="d0" transform="translate(140 208) rotate(0) scale(0.96)" d="M0 -7 Q6 1 0 5 Q-6 1 0 -7Z"/>
+    </g>
+    <!-- empty bottle, still standing -->
+    <g transform="translate(220 234)">
+      <path d="M-10 0 V-34 Q-10 -42 -4 -46 V-60 H4 V-46 Q10 -42 10 -34 V0Z" fill="#c2702e" stroke-width="4"/>
+      <rect x="-10" y="-28" width="20" height="14" fill="#ffe066" stroke-width="3"/>
+      <path d="M-6 -38 V-8" fill="none" stroke="#fff8ef" stroke-width="3" opacity="0.6"/>
+    </g>
+  </g>
+
+  <style>
+    .shake { transform-box: view-box; transform-origin: 120px 160px; animation: shake 1.6s ease-in-out infinite; }
+    @keyframes shake { 0%, 40%, 100% { transform: rotate(0deg); } 48% { transform: rotate(-2.5deg); } 56% { transform: rotate(2.5deg); } 64% { transform: rotate(-2deg); } 72% { transform: rotate(1.5deg); } 80% { transform: rotate(0deg); } }
+    .roar { transform-box: view-box; transform-origin: 120px 98px; animation: roar 1.6s ease-out infinite; }
+    @keyframes roar { 0%, 40% { opacity: 0; transform: scale(0.85); } 50% { opacity: 1; } 85% { opacity: 1; transform: scale(1.05); } 100% { opacity: 0; transform: scale(1.1); } }
+    .mouth { transform-box: fill-box; transform-origin: 50% 0%; animation: mouth 1.6s ease-in-out infinite; }
+    @keyframes mouth { 0%, 36% { transform: scaleY(0); } 44%, 80% { transform: scaleY(1); } 88%, 100% { transform: scaleY(0); } }
+    .grin { animation: grin 1.6s ease-in-out infinite; }
+    @keyframes grin { 0%, 34% { opacity: 1; } 38%, 86% { opacity: 0; } 90%, 100% { opacity: 1; } }
+    .drops path { animation: drip 1.6s ease-in-out infinite; }
+    .drops .d1 { animation-delay: -0.5s; } .drops .d2 { animation-delay: -1s; }
+    @keyframes drip { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    @media (prefers-reduced-motion: reduce) { .shake, .roar, .mouth { animation: none; opacity: 1; transform: none; } .grin { animation: none; opacity: 0; } .drops path { animation: none; } }
+  </style>
+</svg>
