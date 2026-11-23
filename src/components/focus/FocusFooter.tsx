@@ -26,6 +26,11 @@ export async function FocusFooter() {
           © {site.name}. {t.focus.footer.rights}
         </p>
       </div>
+      <div className="mx-auto max-w-6xl px-4 pb-8 text-sm text-bt-muted sm:px-6">
+        <p>
+          {site.company.legalName} · {t.footer.taxId}: {site.company.taxId} · {site.company.address}
+        </p>
+      </div>
     </footer>
   );
 }

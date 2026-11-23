@@ -161,6 +161,7 @@ export const vi: Dictionary = {
   },
   footer: {
     email: "Email",
+    taxId: "MST",
     madeWith: "Làm bằng cái tâm (và vài cái sọc) tại một studio nhỏ.",
   },
   themeToggle: {

@@ -26,6 +26,11 @@ export async function Footer() {
           {t.footer.madeWith} © {site.name}
         </p>
       </div>
+      <div className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
+        <p className="text-sm font-medium">
+          {site.company.legalName} · {t.footer.taxId}: {site.company.taxId} · {site.company.address}
+        </p>
+      </div>
     </footer>
   );
 }

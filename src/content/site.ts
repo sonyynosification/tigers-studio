@@ -9,6 +9,12 @@ export const site = {
   phone: "+84 776 703 343",
   /** Telegram username without the @. */
   telegram: "tigersbuild",
+  /** Legal company details shown in the footer. TODO: replace placeholders before launch. */
+  company: {
+    legalName: "TIGERS BUILD",
+    taxId: "0000000000",
+    address: "53 Le Dai Hanh - Phuong Nha Trang - Khanh Hoa",
+  },
 };
 
 export const nav = [

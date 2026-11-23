@@ -157,6 +157,7 @@ export const en = {
   },
   footer: {
     email: "Email",
+    taxId: "Tax ID",
     madeWith: "Made with stripes in a small studio.",
   },
   themeToggle: {
