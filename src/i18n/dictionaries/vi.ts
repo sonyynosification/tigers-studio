@@ -6,9 +6,9 @@ import type { Dictionary } from "./en";
 
 export const vi: Dictionary = {
   meta: {
-    title: "tigers.build · Website & app gây tiếng vang",
+    title: "tigers.build · Thiết kế & phát triển Website, App",
     description:
-      "Studio nhỏ chuyên thiết kế và phát triển. Website, app di động, và thỉnh thoảng là vài ý tưởng hoang dã.",
+      "Studio thiết kế và phát triển website, ứng dụng iOS & Android và MVP bằng Next.js, React Native. Nhóm nhỏ, làm chỉn chu, ra mắt nhanh.",
     notFoundTitle: "Không tìm thấy trang",
   },
   nav: {
@@ -27,6 +27,7 @@ export const vi: Dictionary = {
       tape: "sang xịn",
       after: "",
     },
+    lead: "Studio nhỏ chuyên thiết kế và phát triển. Website, app di động, và thỉnh thoảng là vài ý tưởng hoang dã.",
     ctaPrimary: "Bắt đầu dự án →",
     ctaSecondary: "Xem một vòng",
     stickerWebsites: "Website!",
@@ -178,7 +179,7 @@ export const vi: Dictionary = {
   // Chế độ tập trung: giọng trang trọng, "chúng tôi" và "bạn", không đùa.
   focus: {
     meta: {
-      title: "tigers.build · Studio thiết kế và phát triển phần mềm",
+      title: "tigers.build · Thiết kế & phát triển Website, App",
       description:
         "Chúng tôi thiết kế và phát triển website, ứng dụng di động và sản phẩm số cho doanh nghiệp.",
     },

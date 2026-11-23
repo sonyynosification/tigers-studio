@@ -1,4 +1,4 @@
-import { nav, site } from "@/content/site";
+import { formattedAddress, nav, site } from "@/content/site";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { FocusLogo } from "./FocusHeader";
 
@@ -28,7 +28,7 @@ export async function FocusFooter() {
       </div>
       <div className="mx-auto max-w-6xl px-4 pb-8 text-sm text-bt-muted sm:px-6">
         <p>
-          {site.company.legalName} · {t.footer.taxId}: {site.company.taxId} · {site.company.address}
+          {site.company.legalName} · {t.footer.taxId}: {site.company.taxId} · {formattedAddress}
         </p>
       </div>
     </footer>

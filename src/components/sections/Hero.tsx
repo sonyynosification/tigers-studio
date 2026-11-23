@@ -18,7 +18,7 @@ export async function Hero() {
           {title.after}
         </h1>
         <p className="mt-6 max-w-[42ch] text-lg font-medium md:text-xl">
-          {t.meta.description}
+          {t.hero.lead}
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <ButtonLink href="#contact">{t.hero.ctaPrimary}</ButtonLink>

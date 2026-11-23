@@ -1,5 +1,5 @@
 // Language-independent site data. Translated copy lives in src/i18n/dictionaries.
-// TODO: confirm email, phone and Telegram before launch — phone and Telegram are placeholders.
+// TODO: confirm email, phone and Telegram before launch.
 
 export const site = {
   name: "tigers.build",
@@ -9,13 +9,25 @@ export const site = {
   phone: "+84 776 703 343",
   /** Telegram username without the @. */
   telegram: "tigersbuild",
-  /** Legal company details shown in the footer. TODO: replace placeholders before launch. */
+  /** Legal company details shown in the footer and in the structured data. */
   company: {
     legalName: "TIGERS BUILD",
-    taxId: "0000000000",
-    address: "53 Le Dai Hanh - Phuong Nha Trang - Khanh Hoa",
+    taxId: "056092006797",
+    address: {
+      street: "53 Lê Đại Hành",
+      ward: "Phường Nha Trang",
+      province: "Khánh Hòa",
+      country: "Việt Nam",
+      countryCode: "VN",
+    },
   },
 };
+
+/** One-line postal address, e.g. for the footer. */
+export const formattedAddress = (() => {
+  const { street, ward, province, country } = site.company.address;
+  return [street, ward, province, country].join(", ");
+})();
 
 export const nav = [
   { key: "work", href: "#work" },

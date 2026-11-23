@@ -4,9 +4,9 @@
 
 export const en = {
   meta: {
-    title: "tigers.build · Websites & apps that roar",
+    title: "tigers.build · Web & App Development Studio",
     description:
-      "A small, loud studio for design and development. Websites, mobile apps, and the odd wild idea.",
+      "Design and development studio building fast websites, iOS & Android apps and MVPs with Next.js and React Native. Small team, big roar.",
     notFoundTitle: "Page not found",
   },
   nav: {
@@ -25,6 +25,7 @@ export const en = {
       tape: "roar.",
       after: "",
     },
+    lead: "A small, loud studio for design and development. Websites, mobile apps, and the odd wild idea.",
     ctaPrimary: "Start a project →",
     ctaSecondary: "See our work",
     stickerWebsites: "Websites!",
@@ -174,7 +175,7 @@ export const en = {
   // Focus mode: the calm, formal Bento layout. Plain, precise wording; no mascot jokes.
   focus: {
     meta: {
-      title: "tigers.build · Design and development studio",
+      title: "tigers.build · Web & App Development Studio",
       description:
         "We design and build websites, mobile apps and digital products for growing businesses.",
     },

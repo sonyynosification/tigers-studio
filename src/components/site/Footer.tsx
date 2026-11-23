@@ -1,5 +1,5 @@
 import { Logo } from "./Header";
-import { nav, site } from "@/content/site";
+import { formattedAddress, nav, site } from "@/content/site";
 import { getDictionary } from "@/i18n/get-dictionary";
 
 export async function Footer() {
@@ -28,7 +28,7 @@ export async function Footer() {
       </div>
       <div className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
         <p className="text-sm font-medium">
-          {site.company.legalName} · {t.footer.taxId}: {site.company.taxId} · {site.company.address}
+          {site.company.legalName} · {t.footer.taxId}: {site.company.taxId} · {formattedAddress}
         </p>
       </div>
     </footer>

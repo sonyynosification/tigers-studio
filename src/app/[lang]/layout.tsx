@@ -53,6 +53,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       alternateLocale: locales.filter((l) => l !== lang).map((l) => ogLocales[l]),
       type: "website",
     },
+    twitter: { card: "summary_large_image", title: meta.title, description: meta.description },
+    robots: { index: true, follow: true, "max-image-preview": "large" },
   };
 }
 
@@ -64,9 +66,50 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const display = lang === "vi" ? archivo : archivoBlack;
+  const { meta } = getDictionaryFor(lang);
+  // Structured data so search engines know who the studio is and how to reach it.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": `${site.url}/#organization`,
+        name: site.name,
+        legalName: site.company.legalName,
+        url: site.url,
+        logo: `${site.url}/icon.svg`,
+        image: `${site.url}/${lang}/opengraph-image`,
+        description: meta.description,
+        email: site.email,
+        telephone: site.phone.replace(/\s/g, ""),
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: site.company.address.street,
+          addressLocality: site.company.address.ward,
+          addressRegion: site.company.address.province,
+          addressCountry: site.company.address.countryCode,
+        },
+        sameAs: [`https://t.me/${site.telegram}`],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}/#website`,
+        url: site.url,
+        name: site.name,
+        inLanguage: locales,
+        publisher: { "@id": `${site.url}/#organization` },
+      },
+    ],
+  };
   return (
     <html lang={lang} className={`${display.variable} ${spaceGrotesk.variable} overflow-x-clip antialiased`}>
-      <body className="min-h-dvh overflow-x-clip">{children}</body>
+      <body className="min-h-dvh overflow-x-clip">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
