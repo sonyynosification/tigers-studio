@@ -10,12 +10,14 @@ export const site = {
   /** Telegram username without the @. */
   telegram: "tigersbuild",
   /**
-   * Self-hosted Umami (Upwind: tigers-store/umami). The website ID comes from the
-   * Umami dashboard; with none set (e.g. local dev) no tracking script is loaded.
+   * Self-hosted Umami (Upwind: tigers-store/umami). The website ID is public (it is
+   * in every page's HTML). Umami only counts visits on `domains`, so local dev and
+   * the Upwind preview address stay out of the stats.
    */
   analytics: {
     host: "https://tigers-analytics.dx.devtigers.net",
-    websiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
+    websiteId: "1522fbf0-5f4a-45ee-9494-e4f5b5f29033",
+    domains: "tigers.build",
   },
   /** Legal company details shown in the footer and in the structured data. */
   company: {

@@ -110,13 +110,12 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
         {children}
-        {site.analytics.websiteId && (
-          <Script
-            src={`${site.analytics.host}/script.js`}
-            data-website-id={site.analytics.websiteId}
-            strategy="afterInteractive"
-          />
-        )}
+        <Script
+          src={`${site.analytics.host}/script.js`}
+          data-website-id={site.analytics.websiteId}
+          data-domains={site.analytics.domains}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
