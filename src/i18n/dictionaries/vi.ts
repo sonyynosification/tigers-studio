@@ -303,4 +303,69 @@ export const vi: Dictionary = {
     body: "Kit ngủ gật, thế là trang này đi lạc mất rồi. Để mình đưa bạn về nhà nhé.",
     back: "← Về tigers.build",
   },
+  caseStudy: {
+    breadcrumb: "Đường dẫn",
+    home: "Trang chủ",
+    work: "Dự án",
+    readCaseStudy: "Xem chi tiết dự án",
+    tigersStore: {
+      meta: {
+        title: "Dự án Tigers Store: nền tảng tạo website cho doanh nghiệp nhỏ",
+        description:
+          "Cách tigers.build thiết kế và xây dựng Tigers Store: chọn mẫu website có sẵn, chỉnh sửa ngay trên trình duyệt, thanh toán VietQR và xuất bản, hoặc tải về dự án Next.js.",
+      },
+      sticker: "Dự án ✦ Nền tảng tạo website",
+      title: { before: "Tigers Store: website ", tape: "làm sẵn", after: " cho doanh nghiệp nhỏ." },
+      lead: "Chọn một mẫu, thay chữ và ảnh của bạn, rồi xuất bản. Chúng tôi thiết kế và xây dựng toàn bộ sản phẩm, từ kho mẫu đến trình chỉnh sửa, thanh toán và hosting.",
+      visit: "Truy cập Tigers Store",
+      newTab: "(mở trong tab mới)",
+      startProject: "Làm một sản phẩm như thế này →",
+      facts: [
+        { label: "Loại", value: "Ứng dụng web" },
+        { label: "Vai trò", value: "Sản phẩm, thiết kế, lập trình" },
+        { label: "Công nghệ", value: "React, TanStack Start, Puck, Drizzle" },
+        { label: "Trạng thái", value: "Đang hoạt động" },
+      ],
+      problem: {
+        eyebrow: "Vấn đề",
+        title: "Trang trắng là nơi khó bắt đầu nhất.",
+        body: "Một spa, một quán bún hay một công ty du lịch cần website đẹp và nói đúng điều cần nói. Thuê agency thì quá lâu và quá tốn kém, còn công cụ kéo thả từ trang trắng lại khiến chủ cửa hàng không biết bắt đầu từ đâu. Họ cần một website làm sẵn để bắt đầu.",
+      },
+      steps: {
+        eyebrow: "Cách hoạt động",
+        title: "Từ mẫu đến website chạy thật trong bốn bước.",
+        items: [
+          { title: "Chọn mẫu", body: "Tìm theo ngành hoặc duyệt theo danh mục. Mỗi mẫu là một trang hoàn chỉnh, dùng được ngay." },
+          { title: "Chỉnh sửa trên trình duyệt", body: "Các phần, nội dung, hình ảnh, màu sắc và phông chữ. Tự động lưu khi bạn sửa." },
+          { title: "Thanh toán một lần, nếu mẫu có phí", body: "Quét mã VietQR bằng bất kỳ ứng dụng ngân hàng nào. Không cần thẻ, không thuê bao." },
+          { title: "Xuất bản", body: "Website lên mạng với địa chỉ riêng. Có thể tạm ẩn bất cứ lúc nào." },
+        ],
+      },
+      features: {
+        eyebrow: "Những gì chúng tôi xây dựng",
+        title: "Trình chỉnh sửa ai cũng dùng được.",
+        items: [
+          { title: "Xem trước trực tiếp", body: "Trang nằm ngay giữa trình chỉnh sửa và cập nhật khi bạn gõ. Kiểm tra trên điện thoại, máy tính bảng và máy tính trước khi xuất bản." },
+          { title: "Khối và cài đặt", body: "Thêm, xoá và sắp xếp lại các phần. Một màu nhấn, một phông tiêu đề và một phông nội dung quyết định giao diện toàn trang." },
+          { title: "Blog tích hợp", body: "Bài viết được soạn riêng và lên mạng khi website được xuất bản." },
+          { title: "Ba cách sử dụng", body: "Xuất bản trên hosting của chúng tôi, tải về dự án Next.js gọn gàng để chạy ở bất cứ đâu, hoặc để trợ lý AI như Claude chỉnh sửa và xuất bản qua MCP." },
+        ],
+      },
+      numbers: [
+        { value: "14", label: "mẫu website làm sẵn" },
+        { value: "9", label: "ngành nghề" },
+        { value: "Miễn phí", label: "để bắt đầu, với hầu hết các mẫu" },
+      ],
+      build: {
+        eyebrow: "Bên trong",
+        title: "Kit là code. Mẫu là dữ liệu.",
+        body: "Mỗi thiết kế là một kit: các phần, trường chỉnh sửa và bộ theme. Mỗi mẫu là một dòng dữ liệu chọn một kit và chứa trang khởi đầu, nên một kit có thể dùng cho nhiều mẫu và mẫu mới ra mắt mà không cần viết thêm code. Bản xuất Next.js dùng chính các phần đó, nên thứ người dùng tải về đúng là website họ đã chỉnh sửa.",
+      },
+      cta: {
+        title: "Bạn có ý tưởng sản phẩm như thế này?",
+        body: "Chúng tôi thiết kế và xây dựng ứng dụng web, website và app di động từ đầu đến cuối. Kể cho chúng tôi nghe bạn đang làm gì nhé.",
+        contact: "Bắt đầu dự án →",
+      },
+    },
+  },
 };

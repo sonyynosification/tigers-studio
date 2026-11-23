@@ -294,6 +294,71 @@ export const en = {
     body: "Kit dozed off and this page wandered away. Let's get you home.",
     back: "← Back to tigers.build",
   },
+  caseStudy: {
+    breadcrumb: "Breadcrumb",
+    home: "Home",
+    work: "Work",
+    readCaseStudy: "Read the case study",
+    tigersStore: {
+      meta: {
+        title: "Tigers Store case study: a website builder for small businesses",
+        description:
+          "How tigers.build designed and built Tigers Store: pick a finished website template, edit it in the browser, pay by VietQR and publish, or export a Next.js project.",
+      },
+      sticker: "Case study ✦ Template builder",
+      title: { before: "Tigers Store: ", tape: "finished", after: " websites for small businesses." },
+      lead: "Pick a template, swap in your words and photos, then publish. We designed and built the whole product, from the template catalogue to the editor, checkout and hosting.",
+      visit: "Visit Tigers Store",
+      newTab: "(opens in a new tab)",
+      startProject: "Build something like this →",
+      facts: [
+        { label: "Type", value: "Web app" },
+        { label: "Our role", value: "Product, design, development" },
+        { label: "Stack", value: "React, TanStack Start, Puck, Drizzle" },
+        { label: "Status", value: "Live" },
+      ],
+      problem: {
+        eyebrow: "The problem",
+        title: "A blank page is the hardest place to start.",
+        body: "A spa, a noodle shop or a tour operator needs a site that looks good and says the right things. An agency project is too slow and too expensive for that, and a blank-canvas builder leaves the owner staring at an empty page. They need a finished website to start from.",
+      },
+      steps: {
+        eyebrow: "How it works",
+        title: "From template to live site in four steps.",
+        items: [
+          { title: "Pick a template", body: "Search by business or browse a category. Every template is a complete, working page." },
+          { title: "Edit it in the browser", body: "Sections, words, photos, colours and fonts. Saved as you go." },
+          { title: "Pay once, if it isn't free", body: "Scan a VietQR code in any Vietnamese banking app. No cards, no subscriptions." },
+          { title: "Publish", body: "The site goes live at its own address. Take it offline any time." },
+        ],
+      },
+      features: {
+        eyebrow: "What we built",
+        title: "An editor people can actually use.",
+        items: [
+          { title: "Live preview", body: "The page sits in the middle of the editor and updates as you type. Check it at phone, tablet and desktop width before publishing." },
+          { title: "Blocks and settings", body: "Add, remove and reorder sections. One accent colour, a heading font and a body font set the look of the whole site." },
+          { title: "A built-in blog", body: "Posts are written apart from the page and go live when the site is published." },
+          { title: "Three ways out", body: "Publish on our hosting, download a clean Next.js project to run anywhere, or let an AI assistant such as Claude edit and publish through MCP." },
+        ],
+      },
+      numbers: [
+        { value: "14", label: "ready-made templates" },
+        { value: "9", label: "business categories" },
+        { value: "Free", label: "to start, most templates" },
+      ],
+      build: {
+        eyebrow: "Under the hood",
+        title: "Kits are code. Templates are data.",
+        body: "Each design is a kit: its sections, their editor fields and a theme. Each template is a database row that picks a kit and holds the starting page, so one kit can power many templates and new ones ship without new code. The same sections are copied as-is into the Next.js export, so what people download is the site they edited.",
+      },
+      cta: {
+        title: "Got a product idea like this?",
+        body: "We design and build web apps, websites and mobile apps end to end. Tell us what you're building.",
+        contact: "Start a project →",
+      },
+    },
+  },
 };
 
 export type Dictionary = typeof en;

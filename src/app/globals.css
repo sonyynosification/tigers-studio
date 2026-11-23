@@ -124,7 +124,27 @@
   }
 }
 
+/* Page changes (mode switch, language, links) cross-fade instead of flashing, in browsers that
+   support cross-document view transitions; others just load the page as before. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 320ms;
+}
+/* The mode and language switches stay put while the page around it changes. */
+.mode-switch {
+  view-transition-name: mode-switch;
+}
+.lang-switch {
+  view-transition-name: lang-switch;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
   html {
     scroll-behavior: auto;
   }

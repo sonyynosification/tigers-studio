@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Kit } from "@/components/kit/Kit";
+import { LanguagePill } from "@/components/site/LanguagePill";
+import { ModeSwitch } from "@/components/site/ModeSwitch";
 import { ButtonLink } from "@/components/ui/chunky";
 import { nav } from "@/content/site";
 import { localeNames, locales } from "@/i18n/config";
@@ -21,33 +23,21 @@ export async function Logo({ className = "", compact = false }: { className?: st
   );
 }
 
-/** EN / VI pill. Plain <a> so the whole document (html lang, fonts) reloads in the new language. */
-async function LanguageSwitch() {
+/**
+ * EN / VI pill (see <LanguagePill />): a full page load so html lang and fonts change.
+ * `path` is the current page under /[lang] (e.g. "/work/tigers-store"), so switching keeps the reader on it.
+ */
+async function LanguageSwitch({ path = "" }: { path?: string }) {
   const [locale, t] = await Promise.all([getLocale(), getDictionary()]);
-  return (
-    <nav aria-label={t.nav.language}>
-      <ul className="border-chunk flex rounded-full bg-white p-0.5 text-sm font-bold">
-        {locales.map((l) => (
-          <li key={l}>
-            <a
-              href={`/${l}`}
-              hrefLang={l}
-              lang={l}
-              aria-label={localeNames[l]}
-              aria-current={l === locale ? "true" : undefined}
-              className={`block rounded-full px-2.5 py-1 ${l === locale ? "bg-ink text-cream" : "hover:text-tiger-dark"}`}
-            >
-              {l.toUpperCase()}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
+  const links = locales.map((l) => ({ locale: l, name: localeNames[l], href: `/${l}${path}` }));
+  return <LanguagePill current={locale} links={links} label={t.nav.language} variant="playful" />;
 }
 
-export async function Header() {
-  const t = await getDictionary();
+/** `path`: the current page under /[lang]; empty on the homepage. */
+export async function Header({ path = "" }: { path?: string }) {
+  const [locale, t] = await Promise.all([getLocale(), getDictionary()]);
+  // Section links point at the homepage so they also work from other pages.
+  const home = path ? `/${locale}` : "";
   return (
     <header className="sticky top-0 z-40 bg-cream/85 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
@@ -56,7 +46,7 @@ export async function Header() {
           <ul className="flex gap-7 font-bold">
             {nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="decoration-tiger decoration-[3px] underline-offset-4 hover:underline">
+                <a href={`${home}${item.href}`} className="decoration-tiger decoration-[3px] underline-offset-4 hover:underline">
                   {t.nav[item.key]}
                 </a>
               </li>
@@ -64,8 +54,9 @@ export async function Header() {
           </ul>
         </nav>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <LanguageSwitch />
-          <ButtonLink href="#contact" className="mr-[5px] px-3 py-1.5 text-sm whitespace-nowrap sm:px-4 sm:py-2 sm:text-[15px]">
+          <ModeSwitch current="playful" path={path} />
+          <LanguageSwitch path={path} />
+          <ButtonLink href={`${home}#contact`} size="sm" className="mr-[5px] whitespace-nowrap">
             {t.nav.sayHi}
           </ButtonLink>
         </div>

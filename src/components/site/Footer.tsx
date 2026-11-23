@@ -1,9 +1,9 @@
 import { Logo } from "./Header";
 import { formattedAddress, nav, site } from "@/content/site";
-import { getDictionary } from "@/i18n/get-dictionary";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 
 export async function Footer() {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([getLocale(), getDictionary()]);
   return (
     <footer className="border-t-[2.5px] border-ink bg-paper">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between">
@@ -11,7 +11,7 @@ export async function Footer() {
         <ul className="flex flex-wrap gap-6 font-bold">
           {nav.map((item) => (
             <li key={item.href}>
-              <a href={item.href} className="hover:text-tiger-dark">
+              <a href={`/${locale}${item.href}`} className="hover:text-tiger-dark">
                 {t.nav[item.key]}
               </a>
             </li>

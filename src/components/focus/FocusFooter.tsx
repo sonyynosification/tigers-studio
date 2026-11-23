@@ -1,9 +1,9 @@
 import { formattedAddress, nav, site } from "@/content/site";
-import { getDictionary } from "@/i18n/get-dictionary";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import { FocusLogo } from "./FocusHeader";
 
 export async function FocusFooter() {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([getLocale(), getDictionary()]);
   return (
     <footer className="border-t border-bt-line">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm sm:px-6 md:flex-row md:items-center md:justify-between">
@@ -11,7 +11,7 @@ export async function FocusFooter() {
         <ul className="flex flex-wrap gap-6 font-medium text-bt-muted">
           {nav.map((item) => (
             <li key={item.href}>
-              <a href={item.href} className="hover:text-bt-ink">
+              <a href={`/${locale}${item.href}`} className="hover:text-bt-ink">
                 {t.nav[item.key]}
               </a>
             </li>

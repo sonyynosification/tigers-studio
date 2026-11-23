@@ -12,15 +12,24 @@ const tones: Record<Tone, string> = {
   lilac: "bg-lilac text-ink",
 };
 
+/** Padding and type size live here, not in className: two padding classes on one element
+ *  don't override each other by order, so a className override would be ignored. */
+const sizes = {
+  md: "rounded-xl px-5 py-3 text-[15px]",
+  // Header: compact on phones to sit level with the switches, regular from `sm`.
+  sm: "rounded-xl px-3 py-1.5 text-sm sm:px-4 sm:py-2 sm:text-[15px]",
+};
+
 export function ButtonLink({
   tone = "tiger",
+  size = "md",
   className = "",
   ...props
-}: ComponentProps<typeof Link> & { tone?: Tone }) {
+}: ComponentProps<typeof Link> & { tone?: Tone; size?: keyof typeof sizes }) {
   return (
     <Link
       {...props}
-      className={`border-chunk shadow-chunk press inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[15px] font-bold ${tones[tone]} ${className}`}
+      className={`border-chunk shadow-chunk press inline-flex items-center gap-2 font-bold ${sizes[size]} ${tones[tone]} ${className}`}
     />
   );
 }

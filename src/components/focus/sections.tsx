@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
+import { Eyebrow, Heading, lift, tile } from "./bento";
 import { Kit } from "@/components/kit/Kit";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { icons } from "@/components/sections/Contact";
 import { focusStack, site, work } from "@/content/site";
-import { getDictionary } from "@/i18n/get-dictionary";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import {
   BrowserWire,
   Clock,
@@ -14,44 +15,6 @@ import {
   StepIcon,
   StoreWire,
 } from "./illustrations";
-
-/* ── shared bits ─────────────────────────────────────────────── */
-
-const tile = "relative min-w-0 overflow-hidden rounded-[22px] p-6";
-const lift = "transition-transform duration-300 ease-out hover:-translate-y-1";
-
-function Eyebrow({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <span
-      className={`block text-xs font-semibold tracking-[0.08em] uppercase opacity-70 ${className}`}
-    >
-      {children}
-    </span>
-  );
-}
-
-function Heading({
-  eyebrow,
-  children,
-}: {
-  eyebrow: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="mb-8 max-w-2xl">
-      <Eyebrow className="text-bt-muted opacity-100">{eyebrow}</Eyebrow>
-      <h2 className="font-bento mt-3 text-[clamp(28px,4vw,44px)] leading-[1.05] font-extrabold tracking-[-0.03em] text-balance">
-        {children}
-      </h2>
-    </div>
-  );
-}
 
 /* ── hero bento: intro + services overview ─────────────────── */
 
@@ -255,20 +218,24 @@ export async function FocusProcess() {
 
 export async function FocusWork() {
   const { focus: t } = await getDictionary();
-  const { newTab } = (await getDictionary()).work;
+  const dict = await getDictionary();
+  const { newTab } = dict.work;
+  const locale = await getLocale();
   return (
     <section id="work" className="scroll-mt-24">
       <Heading eyebrow={t.work.eyebrow}>{t.work.title}</Heading>
       <div className="grid gap-3 md:grid-cols-3">
         {work.map((w) => {
-          const external = w.href.startsWith("http");
+          const caseStudy = "caseStudy" in w;
+          const href = caseStudy ? `/${locale}${w.caseStudy}` : w.href;
+          const external = href.startsWith("http");
           const text = t.work.items[w.key];
           const teaser = "teaser" in w;
           const slot = "slot" in w;
           return (
             <a
               key={w.key}
-              href={w.href}
+              href={href}
               {...(external && {
                 target: "_blank",
                 rel: "noopener noreferrer",
@@ -286,7 +253,7 @@ export async function FocusWork() {
               ) : slot ? (
                 <EmptySlot className="aspect-[200/124]" />
               ) : (
-                <StoreWire host={external ? new URL(w.href).host : undefined} />
+                <StoreWire host={w.href.startsWith("http") ? new URL(w.href).host : undefined} />
               )}
               <div className="mt-auto">
                 <Eyebrow>{text.kind}</Eyebrow>
@@ -298,7 +265,7 @@ export async function FocusWork() {
                 </p>
                 {!teaser && (
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
-                    {external ? t.work.visit : t.work.inquire}
+                    {caseStudy ? dict.caseStudy.readCaseStudy : external ? t.work.visit : t.work.inquire}
                     <span
                       aria-hidden
                       className="transition-transform group-hover:translate-x-1"

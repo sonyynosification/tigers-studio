@@ -20,6 +20,8 @@ export const hasLocale = (value: string | undefined): value is Locale =>
  * The proxy serves /[lang]/focus at /[lang] when this cookie is "focus".
  */
 export const THEME_COOKIE = "TIGERS_THEME";
+/** Pages (under /[lang]) that have a Focus version at /[lang]/focus/…; the proxy serves it in place. */
+export const focusPaths = ["", "/work/tigers-store"];
 export const themes = ["playful", "focus"] as const;
 export type Theme = (typeof themes)[number];
 export const hasTheme = (value: string | undefined | null): value is Theme =>

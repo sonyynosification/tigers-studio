@@ -50,16 +50,18 @@ export const processMascots: (string | null)[] = [
 export const serviceColors = ["bg-white", "bg-mint", "bg-sun"];
 
 // Project links. Override the store URL per environment with TIGERS_STORE_URL.
-const tigersStoreUrl =
+export const tigersStoreUrl =
   process.env.TIGERS_STORE_URL ?? "https://tigers-store.dx.devtigers.net";
 
 // `href` starting with http opens in a new tab; "#contact" for unreleased work.
+// `caseStudy` (a path under /[lang]) makes the card open that page instead of `href`.
 // Text for each key is in dictionary `work.items`. `teaser` renders a "coming soon" card;
 // `slot` renders an empty "your app here" card inviting the visitor to get in touch.
 export const work = [
   {
     key: "tigersStore",
     href: tigersStoreUrl,
+    caseStudy: "/work/tigers-store",
     color: "bg-lilac",
     rotate: "-rotate-1",
   },

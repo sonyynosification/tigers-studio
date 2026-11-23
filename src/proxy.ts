@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, hasLocale, LOCALE_COOKIE, THEME_COOKIE, type Locale } from "@/i18n/config";
+import { defaultLocale, focusPaths, hasLocale, LOCALE_COOKIE, THEME_COOKIE, type Locale } from "@/i18n/config";
 
 /** Saved choice first, then the browser's Accept-Language, then English. */
 function preferredLocale(request: NextRequest): Locale {
@@ -26,13 +26,12 @@ export function proxy(request: NextRequest) {
   const first = pathname.split("/")[1];
 
   if (hasLocale(first)) {
-    // Focus mode: serve the formal Bento page at the same URL, so links and the
+    // Focus mode: serve the formal Bento version at the same URL, so links and the
     // language switch keep working and the address bar never shows /focus.
-    const focus =
-      request.cookies.get(THEME_COOKIE)?.value === "focus" &&
-      (pathname === `/${first}` || pathname === `/${first}/`);
+    const rest = pathname.slice(first.length + 1).replace(/\/$/, "");
+    const focus = request.cookies.get(THEME_COOKIE)?.value === "focus" && focusPaths.includes(rest);
     const response = focus
-      ? NextResponse.rewrite(new URL(`/${first}/focus`, request.url))
+      ? NextResponse.rewrite(new URL(`/${first}/focus${rest}`, request.url))
       : NextResponse.next();
     // Remember the language the visitor is reading (including via the switcher).
     if (request.cookies.get(LOCALE_COOKIE)?.value !== first) {

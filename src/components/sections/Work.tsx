@@ -1,9 +1,10 @@
 import { SectionHeading, Sticker } from "@/components/ui/chunky";
 import { work } from "@/content/site";
-import { getDictionary } from "@/i18n/get-dictionary";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 
 export async function Work() {
-  const t = (await getDictionary()).work;
+  const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
+  const t = dict.work;
   return (
     <section
       id="work"
@@ -12,12 +13,13 @@ export async function Work() {
       <SectionHeading eyebrow={t.eyebrow}>{t.title}</SectionHeading>
       <div className="mt-10 grid gap-8 md:grid-cols-3">
         {work.map((w) => {
-          const external = w.href.startsWith("http");
+          const href = "caseStudy" in w ? `/${locale}${w.caseStudy}` : w.href;
+          const external = href.startsWith("http");
           const text = t.items[w.key];
           return (
             <a
               key={w.key}
-              href={w.href}
+              href={href}
               {...(external && {
                 target: "_blank",
                 rel: "noopener noreferrer",
@@ -38,7 +40,7 @@ export async function Work() {
                       <i className="size-2.5 rounded-full bg-tiger" />
                       <i className="size-2.5 rounded-full bg-sun" />
                       <i className="size-2.5 rounded-full bg-mint" />
-                      {external && (
+                      {w.href.startsWith("http") && (
                         <span className="ml-1 truncate text-[10px] font-bold text-ink/60">
                           {new URL(w.href).host}
                         </span>

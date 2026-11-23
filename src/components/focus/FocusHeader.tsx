@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { LanguagePill } from "@/components/site/LanguagePill";
+import { ModeSwitch } from "@/components/site/ModeSwitch";
 import { nav } from "@/content/site";
 import { localeNames, locales } from "@/i18n/config";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
@@ -10,7 +12,7 @@ export async function FocusLogo({ className = "" }: { className?: string }) {
     <Link
       href={`/${locale}`}
       aria-label="tigers.build"
-      className={`font-bento inline-flex shrink-0 items-center text-[19px] font-extrabold tracking-[-0.02em] ${className}`}
+      className={`font-bento inline-flex shrink-0 items-center text-[17px] min-[400px]:text-[19px] font-extrabold tracking-[-0.02em] ${className}`}
     >
       tigers
       <span aria-hidden className="mx-[3px] inline-block size-[9px] rounded-full bg-tiger" />
@@ -19,52 +21,39 @@ export async function FocusLogo({ className = "" }: { className?: string }) {
   );
 }
 
-async function FocusLanguageSwitch() {
+/** `path`: the current page under /[lang], so switching language keeps the reader on it. */
+async function FocusLanguageSwitch({ path = "" }: { path?: string }) {
   const [locale, t] = await Promise.all([getLocale(), getDictionary()]);
-  return (
-    <nav aria-label={t.nav.language}>
-      <ul className="flex rounded-full border border-bt-line bg-white p-0.5 text-sm font-semibold">
-        {locales.map((l) => (
-          <li key={l}>
-            <a
-              href={`/${l}`}
-              hrefLang={l}
-              lang={l}
-              aria-label={localeNames[l]}
-              aria-current={l === locale ? "true" : undefined}
-              className={`block rounded-full px-2.5 py-1 ${l === locale ? "bg-bt-ink text-bt-paper" : "text-bt-muted hover:text-bt-ink"}`}
-            >
-              {l.toUpperCase()}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
+  const links = locales.map((l) => ({ locale: l, name: localeNames[l], href: `/${l}${path}` }));
+  return <LanguagePill current={locale} links={links} label={t.nav.language} variant="focus" />;
 }
 
-export async function FocusHeader() {
-  const t = await getDictionary();
+/** `path`: the current page under /[lang]; empty on the homepage. */
+export async function FocusHeader({ path = "" }: { path?: string }) {
+  const [locale, t] = await Promise.all([getLocale(), getDictionary()]);
+  // Section links point at the homepage so they also work from other pages.
+  const home = path ? `/${locale}` : "";
   return (
     <header className="sticky top-0 z-40 border-b border-transparent bg-bt-paper/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 min-[400px]:gap-3 min-[400px]:px-4 py-4 sm:px-6">
         <FocusLogo />
         <nav aria-label={t.nav.label} className="hidden md:block">
           <ul className="flex gap-7 text-[15px] font-medium text-bt-muted">
             {nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="transition-colors hover:text-bt-ink">
+                <a href={`${home}${item.href}`} className="transition-colors hover:text-bt-ink">
                   {t.nav[item.key]}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
-        <div className="flex shrink-0 items-center gap-2">
-          <FocusLanguageSwitch />
+        <div className="flex shrink-0 items-center gap-1.5 min-[400px]:gap-2">
+          <ModeSwitch current="focus" path={path} />
+          <FocusLanguageSwitch path={path} />
           <a
-            href="#contact"
-            className="font-bento rounded-full bg-bt-ink px-4 py-2 text-sm font-bold whitespace-nowrap text-bt-paper transition-colors hover:bg-black sm:text-[15px]"
+            href={`${home}#contact`}
+            className="font-bento rounded-full bg-bt-ink px-3 py-2 text-sm min-[400px]:px-4 font-bold whitespace-nowrap text-bt-paper transition-colors hover:bg-black sm:text-[15px]"
           >
             {t.focus.nav.contact}
           </a>
