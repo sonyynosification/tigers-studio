@@ -6,7 +6,7 @@ export const site = {
   url: "https://tigers.build",
   email: "hello@tigers.build",
   /** Shown as written; `tel:` link strips spaces. */
-  phone: "+84 900 000 000",
+  phone: "+84 776 703 343",
   /** Telegram username without the @. */
   telegram: "tigersbuild",
 };
