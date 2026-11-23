@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { sendContact, type ContactState } from "@/app/actions/contact";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 
@@ -37,6 +37,16 @@ export function ContactForm({ t, variant = "playful" }: { t: FormText; variant?:
     sendContact,
     { status: "idle" },
   );
+  // Count successful sends in Umami (no-op when the tracker isn't loaded).
+  useEffect(() => {
+    if (state.status === "sent") {
+      (window as { umami?: { track: (event: string, data?: object) => void } }).umami?.track(
+        "contact-sent",
+        { variant },
+      );
+    }
+  }, [state, variant]);
+
   const note =
     state.status === "idle"
       ? ""

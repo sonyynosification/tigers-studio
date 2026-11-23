@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Archivo_Black, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { site } from "@/content/site";
 import { hasLocale, locales, ogLocales } from "@/i18n/config";
 import { getDictionaryFor } from "@/i18n/get-dictionary";
@@ -109,6 +110,13 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
         {children}
+        {site.analytics.websiteId && (
+          <Script
+            src={`${site.analytics.host}/script.js`}
+            data-website-id={site.analytics.websiteId}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

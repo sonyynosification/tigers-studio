@@ -9,6 +9,14 @@ export const site = {
   phone: "+84 776 703 343",
   /** Telegram username without the @. */
   telegram: "tigersbuild",
+  /**
+   * Self-hosted Umami (Upwind: tigers-store/umami). The website ID comes from the
+   * Umami dashboard; with none set (e.g. local dev) no tracking script is loaded.
+   */
+  analytics: {
+    host: "https://tigers-analytics.dx.devtigers.net",
+    websiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
+  },
   /** Legal company details shown in the footer and in the structured data. */
   company: {
     legalName: "TIGERS BUILD",
