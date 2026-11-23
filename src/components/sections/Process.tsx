@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { Kit } from "@/components/kit/Kit";
 import { SectionHeading } from "@/components/ui/chunky";
 import { processMascots } from "@/content/site";
@@ -21,17 +22,24 @@ export async function Process() {
             return (
               <li
                 key={p.title}
-                className="border-chunk shadow-chunk mr-[5px] rounded-[18px] bg-white p-6"
+                // Columns slide in from their own side of the grid.
+                data-reveal={i % 2 ? "right" : "left"}
+                style={{ "--i": i % 2 } as CSSProperties}
+                className="group border-chunk shadow-chunk mr-[5px] rounded-[18px] bg-white p-6 transition-[translate,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-chunk-lg"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <span className="font-display border-chunk inline-grid size-11 place-items-center rounded-full bg-tiger text-lg">
+                    <span
+                      data-reveal="pop"
+                      style={{ "--i": i % 2 } as CSSProperties}
+                      className="font-display border-chunk inline-grid size-11 place-items-center rounded-full bg-tiger text-lg transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-rotate-12 group-hover:scale-110"
+                    >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="font-display mt-4 text-xl">{p.title}</h3>
                   </div>
                   {/* Square, as tall as the number badge + one-line heading beside it (44 + 16 + 28px). */}
-                  <div className="relative grid size-22 shrink-0 place-items-center">
+                  <div className="relative grid size-22 shrink-0 place-items-center group-hover:animate-wiggle">
                     {mascot ? (
                       <Image
                         src={mascot}

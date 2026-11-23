@@ -141,6 +141,77 @@
   view-transition-name: lang-switch;
 }
 
+/* ── Scroll reveals ──
+   Elements marked data-reveal="rise|slap|left|right|pop" move into place as they scroll into view,
+   driven by the scroll position itself (no JS). Set --i on siblings to stagger them.
+   Keyframes give only a `from`: each animation ends on the element's own styles, so rotate/translate
+   utilities on it are kept. Fill is `backwards`, so once revealed the animation lets go and hover
+   transforms work normally. Browsers without scroll-driven animations just show everything as-is. */
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    translate: 0 56px;
+    scale: 0.94;
+  }
+}
+@keyframes reveal-slap {
+  from {
+    opacity: 0;
+    translate: 0 72px;
+    rotate: var(--reveal-rotate, -5deg);
+    scale: 0.9;
+  }
+}
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    translate: -72px 24px;
+    rotate: -3deg;
+  }
+}
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    translate: 72px 24px;
+    rotate: 3deg;
+  }
+}
+@keyframes reveal-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+    rotate: -20deg;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  [data-reveal] {
+    animation-duration: 1ms; /* ignored for scroll timelines, but some engines want it non-zero */
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: backwards;
+    animation-timeline: view();
+    animation-range: cover calc(var(--i, 0) * 4%) cover calc(28% + var(--i, 0) * 4%);
+  }
+  [data-reveal="rise"] {
+    animation-name: reveal-rise;
+  }
+  [data-reveal="slap"] {
+    animation-name: reveal-slap;
+    animation-timing-function: cubic-bezier(0.34, 1.4, 0.64, 1);
+  }
+  [data-reveal="left"] {
+    animation-name: reveal-left;
+  }
+  [data-reveal="right"] {
+    animation-name: reveal-right;
+  }
+  [data-reveal="pop"] {
+    animation-name: reveal-pop;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-range: cover calc(8% + var(--i, 0) * 4%) cover calc(30% + var(--i, 0) * 4%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   @view-transition {
     navigation: none;

@@ -38,13 +38,17 @@ export function Sticker({
   children,
   tone = "mint",
   className = "",
+  reveal = false,
 }: {
   children: ReactNode;
   tone?: Tone;
   className?: string;
+  /** Pop in as it scrolls into view. */
+  reveal?: boolean;
 }) {
   return (
     <span
+      data-reveal={reveal ? "pop" : undefined}
       className={`border-chunk shadow-chunk-sm inline-block rounded-full px-3 py-1.5 text-[13px] font-bold whitespace-nowrap ${tones[tone]} ${className}`}
     >
       {children}
@@ -63,10 +67,10 @@ export function SectionHeading({
 }) {
   return (
     <div className={className}>
-      <Sticker tone="white" className="-rotate-2">
+      <Sticker tone="white" className="-rotate-2" reveal>
         {eyebrow}
       </Sticker>
-      <h2 className="font-display mt-4 text-[clamp(32px,5vw,56px)] leading-[0.95] tracking-tight text-balance">
+      <h2 data-reveal="rise" className="font-display mt-4 text-[clamp(32px,5vw,56px)] leading-[0.95] tracking-tight text-balance">
         {children}
       </h2>
     </div>

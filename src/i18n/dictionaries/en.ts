@@ -30,6 +30,7 @@ export const en = {
     ctaSecondary: "See our work",
     stickerWebsites: "Websites!",
     stickerApps: "Apps too ✦",
+    floatingKit: { bubble: "Hi there!", label: "Say hi to us: jump to the contact form" },
     kitLabel: "Kit the tiger. Press to make Kit roar.",
   },
   marquee: [

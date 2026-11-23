@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { SectionHeading, Sticker } from "@/components/ui/chunky";
 import { work } from "@/content/site";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
@@ -12,7 +13,7 @@ export async function Work() {
     >
       <SectionHeading eyebrow={t.eyebrow}>{t.title}</SectionHeading>
       <div className="mt-10 grid gap-8 md:grid-cols-3">
-        {work.map((w) => {
+        {work.map((w, i) => {
           const href = "caseStudy" in w ? `/${locale}${w.caseStudy}` : w.href;
           const external = href.startsWith("http");
           const text = t.items[w.key];
@@ -24,6 +25,8 @@ export async function Work() {
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
+              data-reveal="rise"
+              style={{ "--i": i } as CSSProperties}
               className={`group block ${w.rotate} transition hover:rotate-0`}
             >
               <div

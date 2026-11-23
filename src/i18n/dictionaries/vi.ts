@@ -32,6 +32,7 @@ export const vi: Dictionary = {
     ctaSecondary: "Xem một vòng",
     stickerWebsites: "Website!",
     stickerApps: "Cả app nữa ✦",
+    floatingKit: { bubble: "Chào bạn!", label: "Chào chúng mình: đến phần liên hệ" },
     kitLabel: "Chú hổ Kit. Nhấn để Kit gầm lên.",
   },
   marquee: [
