@@ -12,8 +12,7 @@ export function generateStaticParams() {
 
 export default function Image() {
   return ogCard({
-    eyebrow: site.name,
-    title: "Websites & apps that roar.",
-    subtitle: "Design & development studio",
+    title: site.name,
+    subtitle: "Websites & apps that roar.",
   });
 }

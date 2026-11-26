@@ -7,8 +7,7 @@ export const contentType = "image/png";
 
 export default function Image() {
   return ogCard({
-    eyebrow: `${site.name} · Case study`,
     title: "Tigers Store",
-    subtitle: "Finished websites for small businesses",
+    subtitle: `Case study by ${site.name}`,
   });
 }

@@ -78,7 +78,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         name: site.name,
         legalName: site.company.legalName,
         url: site.url,
-        logo: `${site.url}/icon.svg`,
+        logo: `${site.url}/logo.png`,
         image: `${site.url}/${lang}/opengraph-image`,
         description: meta.description,
         email: site.email,
